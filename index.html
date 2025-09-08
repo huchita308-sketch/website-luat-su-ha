@@ -1,97 +1,112 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luật sư Nguyễn Ngọc Hà</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luật sư Nguyễn Ngọc Hà — Tư vấn pháp lý chuyên nghiệp</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
   <style>
-    body { font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
-    .navbar { background-color: #002D62; }
+    :root{
+      --primary:#002D62;
+      --accent:#0d6efd;
+      --muted:#6c757d;
+    }
+    body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial; scroll-behavior: smooth; }
+    .navbar { background: var(--primary); }
+    .navbar .nav-link { color: #fff !important; }
+    .brand { font-weight:700; letter-spacing:0.2px; color: #fff; }
 
-    /* Hero */
-    .hero {
-      position: relative;
+    /* HERO SLIDER */
+    .carousel-item {
       height: 100vh;
-      background: url('banner.jpg') center/cover no-repeat fixed;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55);
-      z-index: 1;
-    }
-    .hero .container {
+      min-height: 520px;
+      background-position: center;
+      background-size: cover;
       position: relative;
-      z-index: 2;
+      display: flex;
+      align-items: center;
     }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; animation: fadeDown 1.5s ease; }
-    .hero p { font-size: 1.25rem; animation: fadeUp 2s ease; }
+    .carousel-item::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+      z-index:1;
+    }
+    .carousel-caption {
+      z-index:2;
+      bottom:38%;
+      text-align:center;
+    }
+    .carousel-caption h1 { font-size: clamp(28px, 5vw, 56px); font-weight:800; line-height:1.02; }
+    .carousel-caption p { font-size: clamp(14px, 1.6vw, 20px); margin-top:12px; color: #e9eef8; }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Sections */
+    section { padding: 72px 0; }
+    .section-title { color: var(--primary); margin-bottom: 28px; font-weight:700; }
 
     /* About */
-    .about-photo {
-      max-width: 200px;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform .3s;
-    }
-    .about-photo:hover { transform: scale(1.05); }
+    .about-photo { width:220px; height:220px; object-fit:cover; border-radius:50%; box-shadow:0 10px 30px rgba(2,18,39,0.15); }
 
     /* Services */
-    .service-card {
-      transition: transform .3s, box-shadow .3s;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    .service-card i { font-size: 2rem; margin-bottom: 0.5rem; color: #002D62; }
+    .service-card { border:0; border-radius:12px; transition: transform .35s, box-shadow .35s; }
+    .service-card:hover{ transform: translateY(-8px); box-shadow: 0 18px 40px rgba(2,18,39,0.12); }
+    .service-icon { font-size:34px; color:var(--primary); width:72px; height:72px; display:flex; align-items:center; justify-content:center; border-radius:14px; background:linear-gradient(180deg,#ffffff,#f3f7ff); box-shadow:0 6px 18px rgba(2,18,39,0.05); }
 
-    /* Clients */
-    #clients img {
-      max-height: 60px;
-      object-fit: contain;
-      filter: grayscale(100%);
-      transition: all .3s;
+    /* Blog */
+    .blog-card { border-radius:12px; overflow:hidden; transition: transform .3s, box-shadow .3s; }
+    .blog-card:hover { transform: translateY(-6px); box-shadow:0 16px 36px rgba(2,18,39,0.10); }
+
+    /* Clients carousel small images */
+    #clientCarousel .carousel-item { display:flex; justify-content:center; align-items:center; padding:18px 0; background:transparent; }
+    #clientCarousel img { max-height:64px; object-fit:contain; filter:grayscale(100%); transition: all .25s ease; }
+    #clientCarousel img:hover { filter:none; transform:scale(1.05); }
+
+    /* Floating chat/call buttons */
+    .fab {
+      position: fixed;
+      right: 18px;
+      z-index: 1200;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(2,18,39,0.18);
+      width:56px; height:56px; display:flex; align-items:center; justify-content:center;
+      background:#fff;
+      transition: transform .18s;
     }
-    #clients img:hover {
-      filter: grayscale(0);
-      transform: scale(1.1);
-    }
+    .fab:hover { transform: translateY(-6px); }
+    .fab.zalo { bottom: 20px; }
+    .fab.call { bottom: 90px; background: linear-gradient(180deg,#ff6b00,#ff8a00); color:#fff; }
+    .fab img { width:38px; height:38px; }
 
     /* Footer */
-    footer { background: #002D62; color: white; padding: 20px 0; }
+    footer { background: var(--primary); color: #fff; padding: 28px 0; }
+
+    /* Responsive tweaks */
+    @media (max-width:767px){
+      .carousel-caption { bottom: 30%; padding: 0 18px; }
+      .carousel-caption h1{ font-size: 28px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Luật sư Nguyễn Ngọc Hà</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand brand" href="#">Luật sư Nguyễn Ngọc Hà</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
           <li class="nav-item"><a class="nav-link" href="#blog">Tin tức</a></li>
@@ -102,147 +117,337 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Luật sư Nguyễn Ngọc Hà</h1>
-      <p class="lead">Tận tâm – Chuyên nghiệp – Minh bạch</p>
-      <a href="#contact" class="btn btn-primary btn-lg mt-3">Đặt lịch tư vấn</a>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4 text-center">
-          <img src="luat-su-ha.jpg" alt="Luật sư Hà" class="about-photo">
-        </div>
-        <div class="col-md-8">
-          <h2>Giới thiệu</h2>
-          <p>Luật sư Nguyễn Ngọc Hà có nhiều năm kinh nghiệm tư vấn pháp luật trong các lĩnh vực dân sự, hôn nhân gia đình, đất đai và doanh nghiệp. Với uy tín và trách nhiệm, Luật sư cam kết hỗ trợ khách hàng hiệu quả nhất.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="bg-light py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center">Dịch vụ pháp lý</h2>
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <div class="card p-3 service-card h-100">
-            <i class="fas fa-gavel"></i>
-            <h5 class="mt-2">Luật Dân sự</h5>
-            <p>Tư vấn tranh chấp, hợp đồng, thừa kế, sở hữu, v.v.</p>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card p-3 service-card h-100">
-            <i class="fas fa-heart"></i>
-            <h5 class="mt-2">Hôn nhân & Gia đình</h5>
-            <p>Ly hôn, nuôi con, chia tài sản, tư vấn pháp lý gia đình.</p>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card p-3 service-card h-100">
-            <i class="fas fa-building"></i>
-            <h5 class="mt-2">Doanh nghiệp</h5>
-            <p>Thành lập công ty, hợp đồng thương mại, đăng ký kinh doanh.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section id="blog" class="py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center">Tin pháp luật nổi bật</h2>
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Luật mới 2025 về thương mại</h5>
-              <p>Tóm tắt các điểm cốt lõi cần nắm.</p>
+  <!-- HERO SLIDER
+       NOTE: Thêm ảnh banner vào cùng thư mục: banner.jpg, banner2.jpg, banner3.jpg -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image:url('banner.jpg');">
+        <div class="container">
+          <div class="carousel-caption text-center text-white">
+            <h1>Luật sư Nguyễn Ngọc Hà</h1>
+            <p style="max-width:900px; margin:0 auto;">Tận tâm — Chuyên nghiệp — Minh bạch. Hỗ trợ pháp lý cho cá nhân và doanh nghiệp với hơn 15 năm kinh nghiệm thực chiến.</p>
+            <div class="mt-3">
+              <a href="#contact" class="btn btn-primary btn-lg me-2"><i class="fa fa-calendar-check me-2"></i>Đặt lịch tư vấn</a>
+              <a href="#services" class="btn btn-outline-light btn-lg"><i class="fa fa-gavel me-2"></i>Xem dịch vụ</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Tư vấn hợp đồng trong doanh nghiệp</h5>
-              <p>Điểm quan trọng cần lưu ý khi ký hợp đồng kinh doanh.</p>
+      </div>
+
+      <div class="carousel-item" style="background-image:url('banner2.jpg');">
+        <div class="container">
+          <div class="carousel-caption text-center text-white">
+            <h1>Bảo vệ quyền lợi của bạn</h1>
+            <p style="max-width:900px; margin:0 auto;">Tư vấn chiến lược, soạn thảo hợp đồng, giải quyết tranh chấp — giúp giảm thiểu rủi ro pháp lý và tối ưu chi phí.</p>
+            <div class="mt-3">
+              <a href="#contact" class="btn btn-primary btn-lg me-2"><i class="fa fa-phone me-2"></i>Liên hệ ngay</a>
+              <a href="#blog" class="btn btn-outline-light btn-lg">Tin tức pháp luật</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Chia tài sản khi ly hôn</h5>
-              <p>Quy định mới và cách phân chia công bằng.</p>
+      </div>
+
+      <div class="carousel-item" style="background-image:url('banner3.jpg');">
+        <div class="container">
+          <div class="carousel-caption text-center text-white">
+            <h1>Giải pháp pháp lý cho doanh nghiệp</h1>
+            <p style="max-width:900px; margin:0 auto;">Từ thành lập, cấu trúc quản trị, hợp đồng thương mại đến xử lý tranh chấp — toàn diện và thực tế.</p>
+            <div class="mt-3">
+              <a href="#services" class="btn btn-primary btn-lg me-2">Dịch vụ doanh nghiệp</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Trước</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Sau</span>
+    </button>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-4 text-center" data-aos="fade-right">
+          <!-- Thay ảnh luật sư: luat-su-ha.jpg -->
+          <img src="luat-su-ha.jpg" alt="Luật sư Nguyễn Ngọc Hà" class="about-photo">
+        </div>
+        <div class="col-lg-8" data-aos="fade-left">
+          <h2 class="section-title">Giới thiệu — Luật sư Nguyễn Ngọc Hà</h2>
+          <p><strong>Hơn 15 năm kinh nghiệm</strong> trong tư vấn pháp luật dân sự, hôn nhân gia đình, đất đai và pháp lý doanh nghiệp. Luật sư Hà từng tham gia xử lý nhiều vụ tranh chấp phức tạp, hỗ trợ doanh nghiệp hoàn thiện hệ thống hợp đồng, đồng thời tư vấn bảo vệ quyền lợi cá nhân trong thủ tục ly hôn, thừa kế và tranh chấp tài sản.</p>
+
+          <p><strong>Phương châm làm việc:</strong> Khách hàng là trung tâm — minh bạch trong chi phí — thực tế trong giải pháp. Luật sư ưu tiên giải pháp thương lượng khi có thể để tiết kiệm thời gian và chi phí; khi cần, sẽ đại diện khách hàng tại tòa án để bảo vệ quyền lợi tối đa.</p>
+
+          <ul class="list-unstyled mt-3">
+            <li><i class="fa fa-check-circle text-success me-2"></i>Tư vấn và soạn thảo hợp đồng</li>
+            <li><i class="fa fa-check-circle text-success me-2"></i>Xử lý tranh chấp dân sự, hợp đồng</li>
+            <li><i class="fa fa-check-circle text-success me-2"></i>Tư vấn hôn nhân & gia đình: ly hôn, phân chia tài sản, nuôi con</li>
+            <li><i class="fa fa-check-circle text-success me-2"></i>Hỗ trợ doanh nghiệp: thành lập, hợp đồng, tranh chấp thương mại</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Clients -->
-  <section id="clients" class="bg-light py-5">
-    <div class="container text-center">
-      <h2 class="mb-4">Khách hàng tiêu biểu</h2>
+  <!-- SERVICES -->
+  <section id="services" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Dịch vụ pháp lý chuyên sâu</h2>
+
+      <div class="row gy-4">
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-gavel"></i></div>
+              <div>
+                <h5>Luật Dân sự & Tranh chấp</h5>
+                <p class="mb-2">Tư vấn các vụ tranh chấp dân sự, đòi nợ, bồi thường thiệt hại, tranh chấp về tài sản, bảo vệ quyền sở hữu hợp pháp.</p>
+                <small class="text-muted">Hỗ trợ: thương lượng, hòa giải, đại diện tại tòa án.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="80">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-heart"></i></div>
+              <div>
+                <h5>Hôn nhân & Gia đình</h5>
+                <p class="mb-2">Ly hôn, phân chia tài sản, tranh chấp nuôi con, cấp dưỡng, thủ tục nhận con nuôi, giải quyết tranh chấp phát sinh trong gia đình.</p>
+                <small class="text-muted">Cân nhắc yếu tố pháp lý và tình cảm, ưu tiên hòa giải khi phù hợp.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-building"></i></div>
+              <div>
+                <h5>Pháp lý doanh nghiệp</h5>
+                <p class="mb-2">Tư vấn thành lập công ty, cấu trúc doanh nghiệp, soạn thảo & rà soát hợp đồng thương mại, giải quyết tranh chấp đối tác, hỗ trợ giao dịch M&A cơ bản.</p>
+                <small class="text-muted">Tư vấn mô hình tối ưu về thuế & quản trị (tham khảo luật hiện hành).</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thêm dịch vụ chi tiết hơn -->
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="240">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-file-contract"></i></div>
+              <div>
+                <h5>Soạn thảo & Rà soát hợp đồng</h5>
+                <p class="mb-2">Soạn thảo hợp đồng mua bán, cung cấp dịch vụ, hợp đồng lao động, NDA, điều khoản thanh toán và phạt vi phạm. Rà soát giúp giảm rủi ro pháp lý trước giao dịch.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="320">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-landmark"></i></div>
+              <div>
+                <h5>Đất đai & Nhà ở</h5>
+                <p class="mb-2">Tư vấn tranh chấp đất đai, thủ tục chuyển nhượng, xác định ranh giới, hỗ trợ kiện tụng liên quan đến quyền sử dụng đất.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="card service-card p-4 h-100">
+            <div class="d-flex align-items-start">
+              <div class="service-icon me-3"><i class="fa fa-balance-scale"></i></div>
+              <div>
+                <h5>Hỗ trợ tố tụng & Đại diện tại Tòa</h5>
+                <p class="mb-2">Chuẩn bị hồ sơ, chiến lược tranh tụng, đại diện bào chữa và bảo vệ quyền lợi của khách hàng trước tòa án các cấp.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="container">
+      <h2 class="section-title text-center">Tin pháp luật & Bài phân tích</h2>
+
+      <div class="row gy-4">
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="card blog-card h-100">
+            <img src="blog1.jpg" alt="blog" class="img-fluid" style="height:220px; object-fit:cover;">
+            <div class="card-body">
+              <h5>Luật thương mại 2025 — Những điểm doanh nghiệp cần chú ý</h5>
+              <p>Luật thương mại 2025 (tóm tắt) thay đổi một số quy định về hợp đồng điện tử, quy định trách nhiệm của bên bán khi hàng hóa không phù hợp, và tăng cường bảo vệ quyền lợi người tiêu dùng. Doanh nghiệp cần rà soát điều khoản giao nhận, thanh toán và bảo hành để tránh rủi ro pháp lý khi giao dịch xuyên biên giới.</p>
+              <a href="#" class="stretched-link">Đọc tiếp →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+          <div class="card blog-card h-100">
+            <img src="blog2.jpg" alt="blog" class="img-fluid" style="height:220px; object-fit:cover;">
+            <div class="card-body">
+              <h5>Tư vấn hợp đồng — Các điều khoản dễ bỏ sót</h5>
+              <p>Nhiều doanh nghiệp nhỏ dễ bỏ sót điều khoản thanh toán, quyền sở hữu trí tuệ, và điều khoản chấm dứt hợp đồng. Bài viết phân tích các điều khoản phổ biến cần gia cố, ví dụ: bảo lưu quyền sở hữu, cam kết bảo mật, điều khoản bồi thường và giới hạn trách nhiệm.</p>
+              <a href="#" class="stretched-link">Đọc tiếp →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mt-3 text-center">
+          <a class="btn btn-outline-primary" href="#blog">Xem tất cả bài viết</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="clients" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Khách hàng tiêu biểu</h2>
+
+      <!-- NOTE: chuẩn bị ảnh client1.png client2.jpg client3.jpg -->
+      <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="client1.png" alt="Client 1">
+          </div>
+          <div class="carousel-item">
+            <img src="client2.jpg" alt="Client 2">
+          </div>
+          <div class="carousel-item">
+            <img src="client3.jpg" alt="Client 3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title text-center">Liên hệ & Đặt lịch tư vấn</h2>
+
       <div class="row justify-content-center">
-        <div class="col-4 col-md-2 mb-3"><img src="client1.png" alt="Client 1" class="img-fluid"></div>
-        <div class="col-4 col-md-2 mb-3"><img src="client2.jpg" alt="Client 2" class="img-fluid"></div>
-        <div class="col-4 col-md-2 mb-3"><img src="client3.jpg" alt="Client 3" class="img-fluid"></div>
-      </div>
-    </div>
-  </section>
+        <div class="col-lg-7">
+          <!-- FORM gửi tới huchita308@gmail.com (FormSubmit) -->
+          <form action="https://formsubmit.co/huchita308@gmail.com" method="POST" data-aos="zoom-in">
+            <!-- Tắt captcha FormSubmit (tùy chọn) -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- Sau gửi thành công FormSubmit chuyển hướng (tùy chỉnh) -->
+            <input type="hidden" name="_next" value="https://huchita308.github.io/thank-you.html">
+            <div class="mb-3">
+              <label class="form-label">Họ và tên</label>
+              <input type="text" class="form-control" name="name" required placeholder="Nhập họ và tên">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Số điện thoại</label>
+              <input type="tel" class="form-control" name="phone" required placeholder="0348 132 197">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nội dung tư vấn</label>
+              <textarea class="form-control" name="message" rows="5" required placeholder="Mô tả ngắn vấn đề để Luật sư chuẩn bị."></textarea>
+            </div>
 
-  <!-- Contact -->
-  <section id="contact" class="py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center">Liên hệ ngay</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <form action="https://formsubmit.co/your@email.com" method="POST">
-            <div class="mb-3">
-              <label>Họ và tên</label>
-              <input type="text" class="form-control" name="name" required>
-            </div>
-            <div class="mb-3">
-              <label>Email</label>
-              <input type="email" class="form-control" name="email" required>
-            </div>
-            <div class="mb-3">
-              <label>Nội dung tư vấn</label>
-              <textarea class="form-control" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Gửi yêu cầu</button>
+            <!-- Thông tin ẩn để form gửi về email của bạn. Khi dùng FormSubmit lần đầu, sẽ cần xác nhận email. -->
+            <button type="submit" class="btn btn-primary btn-lg w-100">Gửi yêu cầu tư vấn</button>
           </form>
+
+          <div class="mt-4 text-center">
+            <p class="mb-0"><i class="fa fa-phone me-2"></i><strong>0348 132 197</strong> &nbsp;|&nbsp; <i class="fa fa-map-marker-alt me-2"></i>Gò Vấp, TP HCM</p>
+            <p class="text-muted small mt-1">Chúng tôi trả lời qua email/điện thoại trong giờ hành chính. Vui lòng mô tả rõ để luật sư chuẩn bị tốt nhất.</p>
+          </div>
         </div>
-      </div>
-      <div class="mt-4 text-center">
-        <p><i class="fas fa-phone"></i> 0348 132 197 | <i class="fas fa-map-marker-alt"></i> Gò Vấp, TP HCM</p>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="container text-center">
-      <p>&copy; 2025 Luật sư Nguyễn Ngọc Hà. Bản quyền được bảo hộ.</p>
+      <div class="row align-items-center">
+        <div class="col-md-6 text-md-start mb-2 mb-md-0">
+          <p class="mb-0">&copy; <span id="thisYear"></span> Luật sư Nguyễn Ngọc Hà. Bản quyền được bảo hộ.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <small>Thiết kế & phát triển: Nội bộ</small>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- ZALO CHAT BUTTON + CALL BUTTON
+       - Zalo mở: https://zalo.me/{số}
+       - Số: 0348132197  (bấm trên di động sẽ gọi/zalo)
+  -->
+  <a class="fab zalo" href="https://zalo.me/0348132197" target="_blank" aria-label="Chat Zalo">
+    <!-- Sử dụng logo Zalo công khai (nếu mất, thay bằng ảnh zalo_local.png trong thư mục của bạn) -->
+    <img src="https://stc-zaloprofile.zdn.vn/pc/v1/images/zalo_sharelogo.png" alt="Zalo">
+  </a>
+
+  <a class="fab call" href="tel:0348132197" aria-label="Gọi điện">
+    <i class="fa fa-phone"></i>
+  </a>
+
+  <!-- SCRIPTS: Bootstrap, AOS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   <script>
-    // Parallax effect cho hero
-    window.addEventListener("scroll", function() {
-      let scrollTop = window.pageYOffset;
-      document.querySelector(".hero").style.backgroundPositionY = -(scrollTop * 0.4) + "px";
+    // SET YEAR
+    document.getElementById('thisYear').textContent = new Date().getFullYear();
+
+    // AOS init
+    AOS.init({ duration: 900, once: true });
+
+    // Make client carousel behave as an auto-scrolling carousel (loop smoothly)
+    (function(){
+      const clientCarouselEl = document.getElementById('clientCarousel');
+      if(clientCarouselEl){
+        const carousel = new bootstrap.Carousel(clientCarouselEl, {
+          interval: 2800,
+          ride: 'carousel',
+          pause: false,
+          wrap: true
+        });
+      }
+    })();
+
+    // Optional: Pause hero slider when user focuses form input (UX)
+    const hero = document.getElementById('heroCarousel');
+    if(hero){
+      hero.addEventListener('mouseenter', ()=> {
+        bootstrap.Carousel.getInstance(hero).pause();
+      });
+      hero.addEventListener('mouseleave', ()=> {
+        bootstrap.Carousel.getInstance(hero).cycle();
+      });
+    }
+
+    // Accessibility: Keyboard shortcut 'c' to jump to contact form
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'c' || e.key === 'C'){
+        location.href = '#contact';
+      }
     });
   </script>
 </body>
