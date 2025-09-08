@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Luật sư Nguyễn Ngọc Hà — Tư vấn pháp lý chuyên nghiệp</title>
+  <meta name="description" content="Luật sư Nguyễn Ngọc Hà - tư vấn pháp lý dân sự, hôn nhân, đất đai, doanh nghiệp. Hơn 15 năm kinh nghiệm. Tận tâm - Chuyên nghiệp - Minh bạch.">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap (ổn định) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -20,14 +21,22 @@
       --accent:#0d6efd;
       --muted:#6c757d;
     }
-    body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial; scroll-behavior: smooth; }
+    html, body { height:100%; }
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      scroll-behavior: smooth;
+      /* ensure fixed-top navbar doesn't cover content */
+      padding-top: 72px;
+      background: #f8f9fb;
+    }
+
     .navbar { background: var(--primary); }
     .navbar .nav-link { color: #fff !important; }
     .brand { font-weight:700; letter-spacing:0.2px; color: #fff; }
 
     /* HERO SLIDER */
     .carousel-item {
-      height: 100vh;
+      height: 85vh;
       min-height: 520px;
       background-position: center;
       background-size: cover;
@@ -35,39 +44,52 @@
       display: flex;
       align-items: center;
     }
+    /* soft overlay */
     .carousel-item::before{
       content:"";
       position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.50));
       z-index:1;
     }
     .carousel-caption {
       z-index:2;
       bottom:38%;
       text-align:center;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      padding:0 18px;
     }
-    .carousel-caption h1 { font-size: clamp(28px, 5vw, 56px); font-weight:800; line-height:1.02; }
+    .carousel-caption h1 { font-size: clamp(28px, 5vw, 56px); font-weight:800; line-height:1.02; color: #fff; }
     .carousel-caption p { font-size: clamp(14px, 1.6vw, 20px); margin-top:12px; color: #e9eef8; }
+
+    /* Parallax helper (JS will update transform) */
+    .parallax-bg {
+      will-change: transform;
+      transition: transform 0.08s linear;
+    }
 
     /* Sections */
     section { padding: 72px 0; }
     .section-title { color: var(--primary); margin-bottom: 28px; font-weight:700; }
 
     /* About */
-    .about-photo { width:220px; height:220px; object-fit:cover; border-radius:50%; box-shadow:0 10px 30px rgba(2,18,39,0.15); }
+    .about-photo { width:220px; height:220px; object-fit:cover; border-radius:50%; box-shadow:0 10px 30px rgba(2,18,39,0.15); border:6px solid #fff; }
 
     /* Services */
-    .service-card { border:0; border-radius:12px; transition: transform .35s, box-shadow .35s; }
+    .service-card { border:0; border-radius:12px; transition: transform .35s, box-shadow .35s; background: #fff; }
     .service-card:hover{ transform: translateY(-8px); box-shadow: 0 18px 40px rgba(2,18,39,0.12); }
-    .service-icon { font-size:34px; color:var(--primary); width:72px; height:72px; display:flex; align-items:center; justify-content:center; border-radius:14px; background:linear-gradient(180deg,#ffffff,#f3f7ff); box-shadow:0 6px 18px rgba(2,18,39,0.05); }
+    .service-icon { font-size:28px; color:var(--primary); width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:12px; background:linear-gradient(180deg,#ffffff,#f3f7ff); box-shadow:0 6px 18px rgba(2,18,39,0.05); }
 
     /* Blog */
-    .blog-card { border-radius:12px; overflow:hidden; transition: transform .3s, box-shadow .3s; }
+    .blog-card { border-radius:12px; overflow:hidden; transition: transform .3s, box-shadow .3s; background: #fff; }
     .blog-card:hover { transform: translateY(-6px); box-shadow:0 16px 36px rgba(2,18,39,0.10); }
+    .blog-card img { transition: transform .35s, filter .35s; }
+    .blog-card:hover img { transform: scale(1.05); filter: brightness(1.02); }
 
     /* Clients carousel small images */
     #clientCarousel .carousel-item { display:flex; justify-content:center; align-items:center; padding:18px 0; background:transparent; }
-    #clientCarousel img { max-height:64px; object-fit:contain; filter:grayscale(100%); transition: all .25s ease; }
+    #clientCarousel img { max-height:64px; object-fit:contain; filter:grayscale(100%); transition: all .25s ease; background:#fff; padding:8px; border-radius:8px; }
     #clientCarousel img:hover { filter:none; transform:scale(1.05); }
 
     /* Floating chat/call buttons */
@@ -93,16 +115,17 @@
     @media (max-width:767px){
       .carousel-caption { bottom: 30%; padding: 0 18px; }
       .carousel-caption h1{ font-size: 28px; }
+      body { padding-top: 64px; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand brand" href="#">Luật sư Nguyễn Ngọc Hà</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Mở menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMain">
@@ -118,10 +141,10 @@
   </nav>
 
   <!-- HERO SLIDER
-       NOTE: Thêm ảnh banner vào cùng thư mục: banner.jpg, banner2.jpg, banner3.jpg -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+       NOTE: Place banner.jpg, banner2.jpg, banner3.jpg in same folder as this file -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000" aria-label="Banner chính">
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image:url('banner.jpg');">
+      <div class="carousel-item active parallax-bg" style="background-image:url('banner.jpg');">
         <div class="container">
           <div class="carousel-caption text-center text-white">
             <h1>Luật sư Nguyễn Ngọc Hà</h1>
@@ -134,7 +157,7 @@
         </div>
       </div>
 
-      <div class="carousel-item" style="background-image:url('banner2.jpg');">
+      <div class="carousel-item parallax-bg" style="background-image:url('banner2.jpg');">
         <div class="container">
           <div class="carousel-caption text-center text-white">
             <h1>Bảo vệ quyền lợi của bạn</h1>
@@ -147,7 +170,7 @@
         </div>
       </div>
 
-      <div class="carousel-item" style="background-image:url('banner3.jpg');">
+      <div class="carousel-item parallax-bg" style="background-image:url('banner3.jpg');">
         <div class="container">
           <div class="carousel-caption text-center text-white">
             <h1>Giải pháp pháp lý cho doanh nghiệp</h1>
@@ -160,11 +183,11 @@
       </div>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Trước">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Trước</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Sau">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Sau</span>
     </button>
@@ -175,7 +198,6 @@
     <div class="container">
       <div class="row align-items-center gy-4">
         <div class="col-lg-4 text-center" data-aos="fade-right">
-          <!-- Thay ảnh luật sư: luat-su-ha.jpg -->
           <img src="luat-su-ha.jpg" alt="Luật sư Nguyễn Ngọc Hà" class="about-photo">
         </div>
         <div class="col-lg-8" data-aos="fade-left">
@@ -240,7 +262,6 @@
           </div>
         </div>
 
-        <!-- Thêm dịch vụ chi tiết hơn -->
         <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="240">
           <div class="card service-card p-4 h-100">
             <div class="d-flex align-items-start">
@@ -289,10 +310,10 @@
       <div class="row gy-4">
         <div class="col-md-6" data-aos="fade-up">
           <div class="card blog-card h-100">
-            <img src="blog1.jpg" alt="blog" class="img-fluid" style="height:220px; object-fit:cover;">
+            <img src="blog1.jpg" alt="Luật thương mại 2025" class="img-fluid" style="height:220px; object-fit:cover;">
             <div class="card-body">
               <h5>Luật thương mại 2025 — Những điểm doanh nghiệp cần chú ý</h5>
-              <p>Luật thương mại 2025 (tóm tắt) thay đổi một số quy định về hợp đồng điện tử, quy định trách nhiệm của bên bán khi hàng hóa không phù hợp, và tăng cường bảo vệ quyền lợi người tiêu dùng. Doanh nghiệp cần rà soát điều khoản giao nhận, thanh toán và bảo hành để tránh rủi ro pháp lý khi giao dịch xuyên biên giới.</p>
+              <p>Luật thương mại 2025 (tóm tắt) thay đổi một số quy định về hợp đồng điện tử và trách nhiệm của bên bán; doanh nghiệp cần rà soát điều khoản giao nhận, thanh toán và bảo hành để tránh rủi ro.</p>
               <a href="#" class="stretched-link">Đọc tiếp →</a>
             </div>
           </div>
@@ -300,10 +321,10 @@
 
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
           <div class="card blog-card h-100">
-            <img src="blog2.jpg" alt="blog" class="img-fluid" style="height:220px; object-fit:cover;">
+            <img src="blog2.jpg" alt="Tư vấn hợp đồng" class="img-fluid" style="height:220px; object-fit:cover;">
             <div class="card-body">
               <h5>Tư vấn hợp đồng — Các điều khoản dễ bỏ sót</h5>
-              <p>Nhiều doanh nghiệp nhỏ dễ bỏ sót điều khoản thanh toán, quyền sở hữu trí tuệ, và điều khoản chấm dứt hợp đồng. Bài viết phân tích các điều khoản phổ biến cần gia cố, ví dụ: bảo lưu quyền sở hữu, cam kết bảo mật, điều khoản bồi thường và giới hạn trách nhiệm.</p>
+              <p>Phân tích các điều khoản thường bị bỏ sót: thanh toán, IP, chấm dứt, bồi thường và giới hạn trách nhiệm — giúp doanh nghiệp giảm thiểu rủi ro khi ký hợp đồng.</p>
               <a href="#" class="stretched-link">Đọc tiếp →</a>
             </div>
           </div>
@@ -322,16 +343,22 @@
       <h2 class="section-title text-center">Khách hàng tiêu biểu</h2>
 
       <!-- NOTE: chuẩn bị ảnh client1.png client2.jpg client3.jpg -->
-      <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Khách hàng">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#clientCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Logo 1"></button>
+          <button type="button" data-bs-target="#clientCarousel" data-bs-slide-to="1" aria-label="Logo 2"></button>
+          <button type="button" data-bs-target="#clientCarousel" data-bs-slide-to="2" aria-label="Logo 3"></button>
+        </div>
+
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="client1.png" alt="Client 1">
+            <img src="client1.png" alt="Client 1" class="mx-auto d-block">
           </div>
           <div class="carousel-item">
-            <img src="client2.jpg" alt="Client 2">
+            <img src="client2.jpg" alt="Client 2" class="mx-auto d-block">
           </div>
           <div class="carousel-item">
-            <img src="client3.jpg" alt="Client 3">
+            <img src="client3.jpg" alt="Client 3" class="mx-auto d-block">
           </div>
         </div>
       </div>
@@ -346,7 +373,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-7">
           <!-- FORM gửi tới huchita308@gmail.com (FormSubmit) -->
-          <form action="https://formsubmit.co/huchita308@gmail.com" method="POST" data-aos="zoom-in">
+          <form action="https://formsubmit.co/huchita308@gmail.com" method="POST" data-aos="zoom-in" id="contactForm">
             <!-- Tắt captcha FormSubmit (tùy chọn) -->
             <input type="hidden" name="_captcha" value="false">
             <!-- Sau gửi thành công FormSubmit chuyển hướng (tùy chỉnh) -->
@@ -368,7 +395,6 @@
               <textarea class="form-control" name="message" rows="5" required placeholder="Mô tả ngắn vấn đề để Luật sư chuẩn bị."></textarea>
             </div>
 
-            <!-- Thông tin ẩn để form gửi về email của bạn. Khi dùng FormSubmit lần đầu, sẽ cần xác nhận email. -->
             <button type="submit" class="btn btn-primary btn-lg w-100">Gửi yêu cầu tư vấn</button>
           </form>
 
@@ -395,12 +421,8 @@
     </div>
   </footer>
 
-  <!-- ZALO CHAT BUTTON + CALL BUTTON
-       - Zalo mở: https://zalo.me/{số}
-       - Số: 0348132197  (bấm trên di động sẽ gọi/zalo)
-  -->
+  <!-- ZALO CHAT BUTTON + CALL BUTTON -->
   <a class="fab zalo" href="https://zalo.me/0348132197" target="_blank" aria-label="Chat Zalo">
-    <!-- Sử dụng logo Zalo công khai (nếu mất, thay bằng ảnh zalo_local.png trong thư mục của bạn) -->
     <img src="https://stc-zaloprofile.zdn.vn/pc/v1/images/zalo_sharelogo.png" alt="Zalo">
   </a>
 
@@ -409,7 +431,7 @@
   </a>
 
   <!-- SCRIPTS: Bootstrap, AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <script>
@@ -419,11 +441,12 @@
     // AOS init
     AOS.init({ duration: 900, once: true });
 
-    // Make client carousel behave as an auto-scrolling carousel (loop smoothly)
+    // CLIENT CAROUSEL: make it auto-scroll smoothly
     (function(){
       const clientCarouselEl = document.getElementById('clientCarousel');
       if(clientCarouselEl){
-        const carousel = new bootstrap.Carousel(clientCarouselEl, {
+        // bootstrap will auto-init via data-bs-ride, but ensure instance exists
+        const inst = bootstrap.Carousel.getInstance(clientCarouselEl) || new bootstrap.Carousel(clientCarouselEl, {
           interval: 2800,
           ride: 'carousel',
           pause: false,
@@ -432,23 +455,67 @@
       }
     })();
 
-    // Optional: Pause hero slider when user focuses form input (UX)
-    const hero = document.getElementById('heroCarousel');
-    if(hero){
-      hero.addEventListener('mouseenter', ()=> {
-        bootstrap.Carousel.getInstance(hero).pause();
-      });
-      hero.addEventListener('mouseleave', ()=> {
-        bootstrap.Carousel.getInstance(hero).cycle();
-      });
-    }
+    // HERO CAROUSEL: pause on hover only if instance exists
+    (function(){
+      const hero = document.getElementById('heroCarousel');
+      if(hero){
+        // ensure instance exists
+        const inst = bootstrap.Carousel.getInstance(hero) || new bootstrap.Carousel(hero, { interval: 6000, ride: 'carousel' });
+
+        hero.addEventListener('mouseenter', ()=> {
+          try { inst.pause(); } catch(e){ /* safe */ }
+        });
+        hero.addEventListener('mouseleave', ()=> {
+          try { inst.cycle(); } catch(e){ /* safe */ }
+        });
+      }
+    })();
+
+    // Simple JS parallax for .parallax-bg (works better than background-attachment on mobile)
+    (function(){
+      const parallaxEls = Array.from(document.querySelectorAll('.parallax-bg'));
+      if(!parallaxEls.length) return;
+
+      // Throttle scroll handler
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if(!ticking){
+          window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            parallaxEls.forEach((el, idx) => {
+              // different factor for variety
+              const factor = 0.18 + (idx % 3) * 0.04;
+              const translate = scrolled * factor;
+              el.style.transform = `translate3d(0, ${translate * -1}px, 0)`;
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
 
     // Accessibility: Keyboard shortcut 'c' to jump to contact form
     document.addEventListener('keydown', (e) => {
       if(e.key === 'c' || e.key === 'C'){
-        location.href = '#contact';
+        location.hash = '#contact';
       }
     });
+
+    // Form UX: disable submit button after click to prevent double submit
+    (function(){
+      const form = document.getElementById('contactForm');
+      if(form){
+        form.addEventListener('submit', (e) => {
+          const btn = form.querySelector('button[type="submit"]');
+          if(btn){
+            btn.disabled = true;
+            btn.textContent = 'Đang gửi...';
+          }
+          // let the form submit normally to FormSubmit
+        });
+      }
+    })();
   </script>
 </body>
 </html>
