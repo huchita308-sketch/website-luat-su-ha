@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tư Vấn Pháp Luật</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Luật Sư Tư Vấn</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#booking">Đặt lịch</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Trang chủ -->
+  <section id="home" class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Dịch Vụ Tư Vấn Pháp Luật</h1>
+      <p class="lead">Chuyên nghiệp - Uy tín - Bảo mật</p>
+    </div>
+  </section>
+
+  <!-- Giới thiệu -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Giới thiệu</h2>
+      <p>Chúng tôi là đội ngũ luật sư và chuyên viên pháp lý có kinh nghiệm, chuyên cung cấp dịch vụ tư vấn pháp luật nhanh chóng và chính xác.</p>
+    </div>
+  </section>
+
+  <!-- Dịch vụ -->
+  <section id="services" class="bg-light py-5">
+    <div class="container">
+      <h2 class="mb-4">Dịch vụ pháp lý</h2>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-gavel me-2"></i>Luật dân sự</h5>
+              <p class="card-text">Tư vấn tranh chấp tài sản, hợp đồng, quyền sở hữu,...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-heart me-2"></i>Hôn nhân & gia đình</h5>
+              <p class="card-text">Tư vấn ly hôn, chia tài sản, quyền nuôi con,...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-building me-2"></i>Doanh nghiệp</h5>
+              <p class="card-text">Thành lập công ty, thay đổi đăng ký kinh doanh,...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Đặt lịch -->
+  <section id="booking" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Đặt lịch tư vấn</h2>
+      <form id="bookingForm">
+        <div class="mb-3">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nội dung tư vấn</label>
+          <textarea class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Liên hệ -->
+  <section id="contact" class="bg-dark text-white py-4">
+    <div class="container">
+      <h2>Liên hệ</h2>
+      <p><i class="fas fa-phone"></i> 0987 123 456</p>
+      <p><i class="fas fa-envelope"></i> lienhe@luatsutuvan.vn</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Nguyễn Văn A, Quận 1, TP.HCM</p>
+    </div>
+  </section>
+
+  <footer class="bg-secondary text-white text-center py-2">
+    <p>&copy; 2025 Tư Vấn Pháp Luật. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
