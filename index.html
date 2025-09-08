@@ -3,74 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tư Vấn Pháp Luật</title>
+  <title>Luật sư Nguyễn Ngọc Hà</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    .navbar { background-color: #002D62; }
+    .hero { background: url('https://via.placeholder.com/1920x600') center/cover no-repeat; color: white; padding: 120px 0; text-align: center; }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .service-card i { font-size: 2rem; margin-bottom: 0.5rem; color: #002D62; }
+    .about-photo { max-width: 200px; border-radius: 50%; }
+    footer { background: #002D62; color: white; padding: 20px 0; }
+  </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Luật Sư Tư Vấn</a>
+      <a class="navbar-brand" href="#">Luật sư Nguyễn Ngọc Hà</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Trang chủ</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
-          <li class="nav-item"><a class="nav-link" href="#booking">Đặt lịch</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Tin tức</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clients">Khách hàng</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Trang chủ -->
-  <section id="home" class="bg-primary text-white text-center py-5">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-      <h1 class="display-4">Dịch Vụ Tư Vấn Pháp Luật</h1>
-      <p class="lead">Chuyên nghiệp - Uy tín - Bảo mật</p>
+      <h1>Luật sư Nguyễn Ngọc Hà</h1>
+      <p class="lead">Tận tâm – Chuyên nghiệp – Minh bạch</p>
+      <a href="#contact" class="btn btn-primary btn-lg">Đặt lịch tư vấn</a>
     </div>
   </section>
 
-  <!-- Giới thiệu -->
+  <!-- About -->
   <section id="about" class="py-5">
     <div class="container">
-      <h2 class="mb-4">Giới thiệu</h2>
-      <p>Chúng tôi là đội ngũ luật sư và chuyên viên pháp lý có kinh nghiệm, chuyên cung cấp dịch vụ tư vấn pháp luật nhanh chóng và chính xác.</p>
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+          <img src="https://via.placeholder.com/200" alt="Luật sư Hà" class="about-photo">
+        </div>
+        <div class="col-md-8">
+          <h2>Giới thiệu</h2>
+          <p>Luật sư Nguyễn Ngọc Hà có nhiều năm kinh nghiệm tư vấn pháp luật trong các lĩnh vực dân sự, hôn nhân gia đình, đất đai và doanh nghiệp. Với uy tín và trách nhiệm, Luật sư cam kết hỗ trợ khách hàng hiệu quả nhất.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Dịch vụ -->
+  <!-- Services -->
   <section id="services" class="bg-light py-5">
     <div class="container">
-      <h2 class="mb-4">Dịch vụ pháp lý</h2>
+      <h2 class="mb-4 text-center">Dịch vụ pháp lý</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 service-card h-100">
+            <i class="fas fa-gavel"></i>
+            <h5 class="mt-2">Luật Dân sự</h5>
+            <p>Tư vấn tranh chấp, hợp đồng, thừa kế, sở hữu, v.v.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 service-card h-100">
+            <i class="fas fa-heart"></i>
+            <h5 class="mt-2">Hôn nhân & Gia đình</h5>
+            <p>Ly hôn, nuôi con, chia tài sản, tư vấn pháp lý gia đình.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 service-card h-100">
+            <i class="fas fa-building"></i>
+            <h5 class="mt-2">Doanh nghiệp</h5>
+            <p>Thành lập công ty, hợp đồng thương mại, đăng ký kinh doanh.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Tin pháp luật nổi bật</h2>
       <div class="row">
         <div class="col-md-4 mb-3">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-gavel me-2"></i>Luật dân sự</h5>
-              <p class="card-text">Tư vấn tranh chấp tài sản, hợp đồng, quyền sở hữu,...</p>
+              <h5>Luật mới 2025 về thương mại</h5>
+              <p>Tóm tắt các điểm cốt lõi cần nắm.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-heart me-2"></i>Hôn nhân & gia đình</h5>
-              <p class="card-text">Tư vấn ly hôn, chia tài sản, quyền nuôi con,...</p>
+              <h5>Tư vấn hợp đồng trong doanh nghiệp</h5>
+              <p>Điểm quan trọng cần lưu ý khi ký hợp đồng kinh doanh.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-building me-2"></i>Doanh nghiệp</h5>
-              <p class="card-text">Thành lập công ty, thay đổi đăng ký kinh doanh,...</p>
+              <h5>Chia tài sản khi ly hôn</h5>
+              <p>Quy định mới và cách phân chia công bằng.</p>
             </div>
           </div>
         </div>
@@ -78,43 +124,54 @@
     </div>
   </section>
 
-  <!-- Đặt lịch -->
-  <section id="booking" class="py-5">
-    <div class="container">
-      <h2 class="mb-4">Đặt lịch tư vấn</h2>
-      <form id="bookingForm">
-        <div class="mb-3">
-          <label class="form-label">Họ và tên</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Nội dung tư vấn</label>
-          <textarea class="form-control" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
-      </form>
+  <!-- Clients -->
+  <section id="clients" class="bg-light py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Khách hàng tiêu biểu</h2>
+      <div class="row justify-content-center">
+        <div class="col-4 col-md-2 mb-3"><img src="https://via.placeholder.com/100x50" alt="Client logo"></div>
+        <div class="col-4 col-md-2 mb-3"><img src="https://via.placeholder.com/100x50" alt="Client logo"></div>
+        <div class="col-4 col-md-2 mb-3"><img src="https://via.placeholder.com/100x50" alt="Client logo"></div>
+      </div>
     </div>
   </section>
 
-  <!-- Liên hệ -->
-  <section id="contact" class="bg-dark text-white py-4">
+  <!-- Contact -->
+  <section id="contact" class="py-5">
     <div class="container">
-      <h2>Liên hệ</h2>
-      <p><i class="fas fa-phone"></i> 0987 123 456</p>
-      <p><i class="fas fa-envelope"></i> lienhe@luatsutuvan.vn</p>
-      <p><i class="fas fa-map-marker-alt"></i> 123 Nguyễn Văn A, Quận 1, TP.HCM</p>
+      <h2 class="mb-4 text-center">Liên hệ ngay</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form action="https://formsubmit.co/your@email.com" method="POST">
+            <div class="mb-3">
+              <label>Họ và tên</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label>Nội dung tư vấn</label>
+              <textarea class="form-control" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Gửi yêu cầu</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <p><i class="fas fa-phone"></i> 0348 132 197 | <i class="fas fa-map-marker-alt"></i> Gò Vấp, TP HCM</p>
+      </div>
     </div>
   </section>
 
-  <footer class="bg-secondary text-white text-center py-2">
-    <p>&copy; 2025 Tư Vấn Pháp Luật. All rights reserved.</p>
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2025 Luật sư Nguyễn Ngọc Hà. Bản quyền được bảo hộ.</p>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
